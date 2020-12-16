@@ -9,20 +9,26 @@ namespace Text_Recognising
 {
     static class myTesseract
     {
-        private static string res_text { get; set; } 
         public static string Recognize(string leng, string filePath)
         {
             Tesseract tesseract = new Tesseract(@"Languages", leng, OcrEngineMode.TesseractLstmCombined);
 
-            tesseract.SetImage(new Image<Bgr, byte>(filePath));
+            try
+            {
+                tesseract.SetImage(new Image<Bgr, byte>(filePath));
 
-            tesseract.Recognize();
+                tesseract.Recognize();
 
-            res_text = tesseract.GetUTF8Text();
-
-            tesseract.Dispose();
-
-            return res_text;
+                return tesseract.GetUTF8Text();
+            }
+            catch (System.Exception)
+            {
+                return "";
+            }
+            finally
+            {
+                tesseract.Dispose();
+            }
         }
     }
 }
