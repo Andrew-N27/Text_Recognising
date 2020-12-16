@@ -8,47 +8,22 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-using Emgu;
-using Emgu.CV;
-using Emgu.CV.OCR;
-using Emgu.CV.Util;
-using Emgu.CV.Structure;
-using Emgu.Util;
-
-
 namespace Text_Recognising
 {
     public partial class Form1 : Form
     {
-        private string filePath { get; set; }
+        private const string filePath = @"temp_files\tm.png";
 
         public Form1()
         {
             InitializeComponent();
-            //
-        }
-
-        private void btnLoadImg_Click(object sender, EventArgs e)
-        {
-            DialogResult res = openFileDialog1.ShowDialog();
-
-            if(res == DialogResult.OK)
-            {
-                filePath = openFileDialog1.FileName;
-
-                pictureBox1.Image = Clipboard.GetImage();//Image.FromFile(filePath);
-            }
-            else
-            {
-                MessageBox.Show("Изображение не выбрано");
-            }
         }
 
         private void btnRecognize_Click(object sender, EventArgs e)
         {
             try
             {
-                if (string.IsNullOrEmpty(filePath) || string.IsNullOrWhiteSpace(filePath)) //Clipboard.ContainsImage();
+                if (!Clipboard.ContainsImage())
                 {
                     throw new Exception("Изображение не выбрано");
                 }
@@ -58,26 +33,15 @@ namespace Text_Recognising
                 }
                 else
                 {
-                    Tesseract tesseract = new Tesseract(@"Languages", toolStripComboBox1.SelectedItem.ToString(), OcrEngineMode.TesseractLstmCombined);
+                    pictureBox1.Image = Clipboard.GetImage();
 
-                    //var arr = ImageToByte(Clipboard.GetImage());
+                    myFile.CreateIMG(Clipboard.GetImage());
 
-                    tesseract.SetImage(new Image<Bgr, byte>(filePath));
+                    Clipboard.SetText(myTesseract.Recognize(toolStripComboBox1.SelectedItem.ToString(), filePath));
 
-                    //Clipboard.GetImage();
+                    richTextBox1.Text = Clipboard.GetText();
 
-                    Image image = Clipboard.GetImage();
-
-                    //image.GetThumbnailImage();
-
-
-                    tesseract.Recognize();
-
-                    richTextBox1.Text = tesseract.GetUTF8Text();
-
-                    //Clipboard.SetText(tesseract.GetUTF8Text());
-
-                    tesseract.Dispose();
+                    myFile.Delete();
                 }
             }
             catch (Exception ex)
@@ -85,13 +49,5 @@ namespace Text_Recognising
                 MessageBox.Show(ex.Message);
             }
         }
-
-
-        public static byte[] ImageToByte(Image img)
-        {
-            ImageConverter converter = new ImageConverter();
-            return (byte[])converter.ConvertTo(img, typeof(byte[]));
-        }
-
     }
 }
