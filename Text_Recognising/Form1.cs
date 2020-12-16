@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -17,6 +18,7 @@ namespace Text_Recognising
         public Form1()
         {
             InitializeComponent();
+            // win + shift + s
         }
 
         private void btnRecognize_Click(object sender, EventArgs e)
@@ -48,6 +50,15 @@ namespace Text_Recognising
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+        private void btnScrin_Click(object sender, EventArgs e)
+        {
+            KeyboardSend.KeyDown(Keys.LWin);
+            KeyboardSend.KeyDown(Keys.LShiftKey);
+            KeyboardSend.KeyDown(Keys.S);
+            KeyboardSend.KeyUp(Keys.LWin);
+            KeyboardSend.KeyUp(Keys.LShiftKey);
+            KeyboardSend.KeyUp(Keys.S);
         }
     }
 }

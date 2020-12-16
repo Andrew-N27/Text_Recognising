@@ -38,6 +38,8 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.btnScrin = new System.Windows.Forms.ToolStripButton();
             this.toolStrip1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -50,7 +52,8 @@
             this.toolStripLabel1,
             this.toolStripComboBox1,
             this.toolStripSeparator1,
-            this.btnRecognize});
+            this.btnRecognize,
+            this.btnScrin});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(989, 25);
@@ -129,6 +132,16 @@
             this.richTextBox1.TabIndex = 1;
             this.richTextBox1.Text = "";
             // 
+            // btnScrin
+            // 
+            this.btnScrin.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.btnScrin.Image = ((System.Drawing.Image)(resources.GetObject("btnScrin.Image")));
+            this.btnScrin.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnScrin.Name = "btnScrin";
+            this.btnScrin.Size = new System.Drawing.Size(59, 22);
+            this.btnScrin.Text = "Print Srin";
+            this.btnScrin.Click += new System.EventHandler(this.btnScrin_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
@@ -160,6 +173,8 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.ToolStripButton btnScrin;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
     }
 }
 
