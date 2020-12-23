@@ -9,7 +9,8 @@ namespace Text_Recognising
 {
     static class myTesseract
     {
-        public static string Recognize(string leng, string filePath)
+        private const string filePath = @"temp_files\tm.png";
+        public static string Recognize(string leng)
         {
             Tesseract tesseract = new Tesseract(@"Languages", leng, OcrEngineMode.TesseractLstmCombined);
 

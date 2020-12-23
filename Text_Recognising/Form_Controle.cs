@@ -13,7 +13,7 @@ namespace Text_Recognising
 {
     public partial class Form_Controle : Form
     {
-        private const string filePath = @"temp_files\tm.png";
+        //private const string filePath = @"temp_files\tm.png";
 
         public Form_Controle()
         {

@@ -27,7 +27,7 @@ namespace Text_Recognising
         public Screen()
         {
             InitializeComponent();
-
+            this.TopMost = true;
             this.Opacity = .2D; //Make trasparent
             this.DoubleBuffered = true;
             this.SetStyle(ControlStyles.ResizeRedraw, true); // this is to avoid visual artifacts
@@ -56,10 +56,15 @@ namespace Text_Recognising
         Rectangle Top { get { return new Rectangle(0, 0, this.ClientSize.Width, _); } }
         Rectangle Left { get { return new Rectangle(0, 0, _, this.ClientSize.Height); } }
         Rectangle Bottom { get { return new Rectangle(0, this.ClientSize.Height - _, this.ClientSize.Width, _); } }
-
-        
-
         Rectangle Right { get { return new Rectangle(this.ClientSize.Width - _, 0, _, this.ClientSize.Height); } }
+
+        private void btnCopy_Click(object sender, EventArgs e)
+        {
+            myFile myFile = new myFile();
+            myFile.CreateIMG(this.Location.X, this.Location.Y, this.Width, this.Height, this.Size);
+            //Controllers.Recognize(toolStripComboBox1.SelectedItem.ToString()); lang
+        }
+
         Rectangle TopLeft { get { return new Rectangle(0, 0, _, _); } }
         Rectangle TopRight { get { return new Rectangle(this.ClientSize.Width - _, 0, _, _); } }
         Rectangle BottomLeft { get { return new Rectangle(0, this.ClientSize.Height - _, _, _); } }
@@ -97,6 +102,7 @@ namespace Text_Recognising
         {
             this.Close();
         }
+
         //private void btnCaptureThis_Click(object sender, EventArgs e)
         //{
         //    this.Hide();

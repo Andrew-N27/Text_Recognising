@@ -9,7 +9,7 @@ namespace Text_Recognising
 {
     static public class Controllers
     {
-        private const string filePath = @"temp_files\tm.png";
+        //private const string filePath = @"temp_files\tm.png";
 
         static public void Recognize(string lang)
         {
@@ -25,8 +25,8 @@ namespace Text_Recognising
                 }
                 else
                 {
-                    myFile.CreateIMG(Clipboard.GetImage());
-                    Clipboard.SetText(myTesseract.Recognize(lang, filePath));
+                    //myFile.CreateIMG(Clipboard.GetImage());
+                    Clipboard.SetText(myTesseract.Recognize(lang));
                     myFile.Delete();
                 }
             }

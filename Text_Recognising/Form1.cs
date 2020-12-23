@@ -13,13 +13,12 @@ namespace Text_Recognising
     public partial class Form1 : Form
     {
         Form_Controle form_Controle = null;
+        Screen Screen = null;
         public Form1()
         {
             InitializeComponent();
-            //this.Hide();
+            this.Visible = false;
             this.ShowInTaskbar = false;
-            Screen screen = new Screen();
-            screen.Show();
         }
 
         private void closeToolStripMenuItem_Click(object sender, EventArgs e)
@@ -33,6 +32,16 @@ namespace Text_Recognising
             {
                 form_Controle = new Form_Controle();
                 form_Controle.Show();
+            }
+        }
+
+        private void recognizeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if(Screen == null || Screen.IsDisposed)
+            {
+                Screen = new Screen();
+                Screen.ShowInTaskbar = false;
+                Screen.Show();
             }
         }
     }
