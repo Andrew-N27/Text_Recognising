@@ -14,11 +14,12 @@ namespace Text_Recognising
     {
         Form_Controle form_Controle = null;
         Screen Screen = null;
+
+        public string Language = "English";
+
         public Form1()
         {
             InitializeComponent();
-            this.Visible = false;
-            this.ShowInTaskbar = false;
         }
 
         private void closeToolStripMenuItem_Click(object sender, EventArgs e)
@@ -44,5 +45,21 @@ namespace Text_Recognising
                 Screen.Show();
             }
         }
+
+        private void CheckToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            engTSMI.Checked = false;
+            rusTSMI.Checked = false;
+            ukrTSMI.Checked = false;
+
+            ((ToolStripMenuItem)sender).Checked = true;
+            Language = ((ToolStripMenuItem)sender).Text;
+        }
+        
+        //static public string GetLanguage()
+        //{
+        //    string lang = Language;
+        //    return lang;
+        //}
     }
 }
