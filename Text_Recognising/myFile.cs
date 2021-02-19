@@ -6,6 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Text_Recognising
 {
@@ -27,9 +28,10 @@ namespace Text_Recognising
                 bmp.Save(filePath);
                 temp = bmp;
             }
-            
+
             //pbCapture.Image = bmp;
             //image.Save(filePath);
+            Clipboard.SetText(myTesseract.Recognize());
         }
 
         public static void Delete()

@@ -15,7 +15,8 @@ namespace Text_Recognising
         Form_Controle form_Controle = null;
         Screen Screen = null;
 
-        public string Language = "English";
+        static public string Language = "English";
+        static public string GetLanguage() { return Language; }
 
         public Form1()
         {
@@ -56,10 +57,5 @@ namespace Text_Recognising
             Language = ((ToolStripMenuItem)sender).Text;
         }
         
-        //static public string GetLanguage()
-        //{
-        //    string lang = Language;
-        //    return lang;
-        //}
     }
 }

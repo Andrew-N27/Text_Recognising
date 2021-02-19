@@ -9,16 +9,15 @@ namespace Text_Recognising
 {
     static class myTesseract
     {
-        private const string filePath = @"temp_files\tm.png";
-
-        public static string Recognize(string leng)
+        private const string filePathPNG = @"temp_files\tm.png";
+        private const string filePathLanguages = @"Languages";
+        public static string Recognize()
         {
-            Tesseract tesseract = new Tesseract(@"Languages", leng, OcrEngineMode.TesseractLstmCombined);
+            Tesseract tesseract = new Tesseract(filePathLanguages, Form1.GetLanguage(), OcrEngineMode.TesseractLstmCombined);
 
             try
             {
-                tesseract.SetImage(new Image<Bgr, byte>(filePath));
-
+                tesseract.SetImage(new Image<Bgr, byte>(filePathPNG));
                 tesseract.Recognize();
 
                 return tesseract.GetUTF8Text();

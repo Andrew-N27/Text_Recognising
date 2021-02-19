@@ -26,7 +26,7 @@ namespace Text_Recognising
                 else
                 {
                     //myFile.CreateIMG(Clipboard.GetImage());
-                    Clipboard.SetText(myTesseract.Recognize(lang));
+                    //Clipboard.SetText(myTesseract.Recognize(lang));
                     myFile.Delete();
                 }
             }
