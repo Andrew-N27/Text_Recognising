@@ -60,9 +60,7 @@ namespace Text_Recognising
 
         private void btnCopy_Click(object sender, EventArgs e)
         {
-            myFile myFile = new myFile();
             myFile.CreateIMG(this.Location.X, this.Location.Y, this.Width, this.Height, this.Size);
-            //Controllers.Recognize(toolStripComboBox1.SelectedItem.ToString()); lang
         }
 
         Rectangle TopLeft { get { return new Rectangle(0, 0, _, _); } }
@@ -103,11 +101,5 @@ namespace Text_Recognising
             this.Close();
         }
 
-        //private void btnCaptureThis_Click(object sender, EventArgs e)
-        //{
-        //    this.Hide();
-        //    Save save = new Save(this.Location.X, this.Location.Y, this.Width, this.Height, this.Size);
-        //    save.Show();
-        //}
     }
 }

@@ -12,31 +12,25 @@ namespace Text_Recognising
 {
     class myFile
     {
-        private const string filePath = @"temp_files\tm.png";
+        //private const string filePath = @"temp_files\tm.png";
 
-        Bitmap temp = null;
+        //private Bitmap _temp = null;
 
-        public void CreateIMG(Int32 x, Int32 y, Int32 w, Int32 h, Size s)
+        public static void CreateIMG(Int32 x, Int32 y, Int32 w, Int32 h, Size s)
         {
             Rectangle rect = new Rectangle(x, y, w, h);
             Bitmap bmp = new Bitmap(rect.Width, rect.Height, PixelFormat.Format32bppArgb);
             Graphics g = Graphics.FromImage(bmp);
             g.CopyFromScreen(rect.Left, rect.Top, 0, 0, s, CopyPixelOperation.SourceCopy);
 
-            if(temp != bmp)
+            try
             {
-                bmp.Save(filePath);
-                temp = bmp;
+                Clipboard.SetText(myTesseract.Recognize(bmp));
             }
-
-            //pbCapture.Image = bmp;
-            //image.Save(filePath);
-            Clipboard.SetText(myTesseract.Recognize());
-        }
-
-        public static void Delete()
-        {
-            File.Delete(filePath);
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
         }
     }
 }

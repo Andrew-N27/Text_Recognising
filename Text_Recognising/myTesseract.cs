@@ -3,21 +3,20 @@ using Emgu.CV;
 using Emgu.CV.OCR;
 using Emgu.CV.Util;
 using Emgu.CV.Structure;
-using Emgu.Util;
+using System.Drawing;
 
 namespace Text_Recognising
 {
     static class myTesseract
     {
-        private const string filePathPNG = @"temp_files\tm.png";
-        private const string filePathLanguages = @"Languages";
-        public static string Recognize()
+        //private const string filePathPNG = @"temp_files\tm.png";
+        private const string _filePathLanguages = @"Languages";
+        public static string Recognize(Bitmap bmp)
         {
-            Tesseract tesseract = new Tesseract(filePathLanguages, Form1.GetLanguage(), OcrEngineMode.TesseractLstmCombined);
-
+            Tesseract tesseract = new Tesseract(_filePathLanguages, Form1.GetLanguage(), OcrEngineMode.TesseractLstmCombined);
             try
             {
-                tesseract.SetImage(new Image<Bgr, byte>(filePathPNG));
+                tesseract.SetImage(bmp.ToImage<Bgr, byte>());
                 tesseract.Recognize();
 
                 return tesseract.GetUTF8Text();
@@ -29,7 +28,7 @@ namespace Text_Recognising
             finally
             {
                 tesseract.Dispose();
-            }
+            }           
         }
     }
 }

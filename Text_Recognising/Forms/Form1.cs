@@ -17,17 +17,14 @@ namespace Text_Recognising
 
         static public string Language = "English";
         static public string GetLanguage() { return Language; }
-
         public Form1()
         {
             InitializeComponent();
         }
-
         private void closeToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Close();
         }
-
         private void showWindowToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if(form_Controle == null || form_Controle.IsDisposed)
@@ -36,7 +33,6 @@ namespace Text_Recognising
                 form_Controle.Show();
             }
         }
-
         private void recognizeToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if(Screen == null || Screen.IsDisposed)
@@ -46,7 +42,6 @@ namespace Text_Recognising
                 Screen.Show();
             }
         }
-
         private void CheckToolStripMenuItem_Click(object sender, EventArgs e)
         {
             engTSMI.Checked = false;
